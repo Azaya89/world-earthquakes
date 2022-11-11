@@ -29,11 +29,12 @@ data = [
         "lat": lats,
         "text": infos,
         "marker": {
-            "size": [3 * abs(mag) for mag in mags],
+            "size": [4 * abs(mag) for mag in mags],
             "color": mags,
-            "colorscale": "YlOrRd",
-            "colorbar": {"title": "Magnitude."},
-        },
+            "colorscale": "Viridis",
+            "reversescale": True,
+            "colorbar": {"title": "Magnitude"},
+                },
     }
 ]
 
