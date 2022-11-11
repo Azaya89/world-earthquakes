@@ -4,15 +4,16 @@ from plotly import offline
 
 filename = "all_month.json"
 
+# Load the file in python readable json format
 with open(filename, encoding="utf-8") as f:
     earthquake_data = json.load(f)
 
-
+# Get title of the plot from the metadata section of file
 title = earthquake_data["metadata"]["title"]
 
 data_file = earthquake_data["features"]
 
-
+# Get magnitude, longitude, latitude and place info from the file data
 mags, lons, lats, infos = [], [], [], []
 
 for i in data_file:
@@ -21,7 +22,7 @@ for i in data_file:
     lats.append(i["geometry"]["coordinates"][1])
     infos.append(i["properties"]["title"])
 
-
+# Design and plot the data
 data = [
     {
         "type": "scattergeo",
@@ -34,7 +35,7 @@ data = [
             "colorscale": "Viridis",
             "reversescale": True,
             "colorbar": {"title": "Magnitude"},
-                },
+        },
     }
 ]
 
